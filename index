@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.K. Communication - Online Services</title>
+    <style>
+        :root {
+            --orange: #F58427;
+            --white: #FFFFFF;
+            --green: #2CAB41;
+            --dark: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+            background-attachment: fixed;
+            color: var(--dark);
+        }
+        .top-bar {
+            background-color: var(--green);
+            color: var(--white);
+            padding: 10px 20px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        header {
+            background-color: var(--white);
+            padding: 30px 20px;
+            /* Flexbox use karke logo aur text ko center mein line up kiya hai */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* Content wrap hone par center mein rahe */
+            gap: 15px; /* Logo aur text ke beech ki jagah */
+            border-bottom: 5px solid var(--orange);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: var(--orange);
+            margin: 0;
+            font-size: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .address {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+            /* Header ke flex container se content bahar na jaye, isliye block display kiya */
+            display: block; 
+            width: 100%;
+            text-align: center;
+        }
+        .tagline {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 5px;
+            /* Header ke flex container se content bahar na jaye */
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--dark);
+            font-size: 32px;
+            margin-bottom: 30px;
+            background-color: var(--white);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 3px solid var(--orange);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            align-items: start;
+        }
+        .service-card {
+            background-color: var(--white);
+            border-top: 5px solid var(--green);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top: 5px solid var(--orange);
+        }
+        .service-card h3 {
+            color: var(--orange);
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            font-size: 20px;
+        }
+        .service-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* WHATSAPP CLICK EFFECT CSS */
+        .service-card li {
+            padding: 0; 
+            margin-bottom: 6px;
+            font-size: 15px;
+            border-bottom: none;
+            cursor: pointer; 
+            transition: color 0.2s ease;
+        }
+        .service-card li:hover {
+            color: var(--orange); 
+            text-decoration: underline;
+        }
+        
+        .service-card li::before {
+            content: "✔ ";
+            color: var(--green);
+            font-weight: bold;
+            margin-right: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            width: 130px; 
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 60px; 
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        /* Yahan Photoshop photo ki height 250px hi rakhi gayi hai */
+        .photo-grid img:first-child {
+            grid-column: span 2; 
+            height: 250px; 
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 5px solid var(--orange);
+        }
+        footer h3 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .contact-btn {
+            background-color: var(--green);
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .contact-btn:hover {
+            background-color: var(--orange);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        📞 Contact Us: 6000316186 | 9085191973
+    </div>
+
+    <header>
+        <img src="r.k..png" alt="R.K. Communication Logo" style="height: 100px; width: 100px; object-fit: contain; border: 3px solid red; border-radius: 50%; padding: 2px;">
+        <h1>R.K. COMMUNICATION</h1>
+        <div style="width: 100%; text-align: center;">
+            <div class="address">📍 Medhi Market, Mayong Bazar, Morigaon (Assam) 782411</div>
+            <p class="tagline">CSC • Digital Studio • Banking • Internet Services</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="text-center">
+            <h2 class="section-title">Our Services <br><span style="font-size:16px; color:red; font-weight:normal;">(Click any service to send us a message on WhatsApp)</span></h2>
+        </div>
+
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <h3>1. AADHAR CARD</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Aadhar Print</li>
+                        <li>Add Mobile Number</li>
+                        <li>Aadhar Correction</li>
+                        <li>Child Aadhar</li>
+                        <li>Find Aadhar</li>
+                        <li>PVC Aadhar</li>
+                        <li>Aadhar Lock/Unlock</li>
+                        <li>Aadhar Download</li>
+                    </ul>
+                    <img src="aadhar.png" alt="Aadhar Card" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>2. PAN CARD</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Pan Print</li>
+                        <li>Pan Download</li>
+                        <li>New Pan</li>
+                        <li>Correction Pan</li>
+                    </ul>
+                    <img src="pancard.png" alt="Pan Card" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>3. VOTER CARD</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Print Voter</li>
+                        <li>Voter Download</li>
+                        <li>New Voter</li>
+                        <li>Correction Voter</li>
+                        <li>Voter List</li>
+                    </ul>
+                    <img src="votercard.png" alt="Voter Card" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>4. RTPS</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Cast Certificate</li>
+                        <li>Registration In Employment Exchange</li>
+                        <li>Re-Registration In Employment Exchange</li>
+                    </ul>
+                    <img src="rtps.png" alt="RTPS" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>5. PHOTOSHOP</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Passport Size Photo</li>
+                        <li>4*6 Photo</li>
+                        <li>A4 Photo</li>
+                        <li>Photo Editing</li>
+                        <li>Text Edit Page</li>
+                        <li>Joint Photo</li>
+                        <li>Photo Framing</li>
+                    </ul>
+                    <div class="photo-grid">
+                        <img src="photoshop.png" alt="Photoshop Service 1">
+                        <img src="1photoshop.png" alt="Photoshop Service 2">
+                        <img src="2photoshop.png" alt="Photoshop Service 3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>6. E-SHARAM CARD</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>New</li>
+                        <li>Update</li>
+                        <li>Download</li>
+                    </ul>
+                    <img src="eshram-card.png" alt="E-Sharam Card" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>7. AIRTEL PAYMENT BANK</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Account Open</li>
+                        <li>Money Transfer</li>
+                        <li>Cash Withdraw</li>
+                        <li>Cash Deposit</li>
+                        <li>Statement</li>
+                        <li>Adhaar Link All Account Balance Enquiry</li>
+                    </ul>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <img src="airtel.png" alt="Airtel" style="width: 100px; height: auto; border-radius: 5px; object-fit: contain;">
+                        <img src="airtel1.png" alt="Airtel Payments Bank" style="width: 100px; height: auto; border-radius: 5px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>8. RECHARGE</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>All Mobile</li>
+                    </ul>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 110px;">
+                        <img src="airtel.png" alt="Airtel" style="width: 100%; height: auto; object-fit: contain;">
+                        <img src="jio.png" alt="Jio" style="width: 100%; height: auto; object-fit: contain;">
+                        <img src="vi.png" alt="Vi" style="width: 100%; height: auto; object-fit: contain;">
+                        <img src="bsnl.png" alt="BSNL" style="width: 100%; height: auto; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>9. PM KISAN</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Registration</li>
+                        <li>KYC</li>
+                    </ul>
+                    <img src="pm-kisan.png" alt="PM Kisan" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>10. RTO / PARIVAHAN</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Vehicle Related All Service</li>
+                        <li>Driving License Related All Service</li>
+                    </ul>
+                    <img src="rto-parivahan.png" alt="RTO Parivahan" style="width: 100px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>11. LAND RECORD</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>Jabanbhandi</li>
+                    </ul>
+                    <img src="land-record.png" alt="Land Record" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>12. INTERNET</h3>
+                <ul>
+                    <li>Jpg To PDF</li>
+                    <li>PDF To Jpg</li>
+                    <li>Size Increase & Decrease</li>
+                    <li>Image Quality</li>
+                    <li>New Email And Work</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>13. CSC</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+                    <ul style="flex: 1;">
+                        <li>CSC Related All Service</li>
+                    </ul>
+                    <img src="csc.png" alt="CSC" style="width: 120px; height: auto; border-radius: 5px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>14-18. OTHER SERVICES</h3>
+                <ul>
+                    <li>14. DATA ENTRY</li>
+                    <li>15. BIO-DATA</li>
+                    <li>16. FORM FILL</li>
+                    <li>17. ONLINE APPLY</li>
+                    <li>18. Deals In Mobile Phone Accessories</li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <h3>R.K. COMMUNICATION</h3>
+        <p>Medhi Market, Mayong Bazar, Morigaon (Assam) 782411</p>
+        <p>Email & Online Work Available</p>
+        <a href="tel:6000316186" class="contact-btn">Call Now</a>
+        <p style="margin-top: 20px; font-size: 13px; color: #bbb;">&copy; 2026 R.K. Communication. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Aapka WhatsApp Number
+        const waNumber = "919085191973"; 
+
+        // Website par jitne bhi 'li' (services ke text) hain, sabko select karo
+        const allServices = document.querySelectorAll('.service-card li');
+
+        allServices.forEach(function(item) {
+            item.addEventListener('click', function() {
+                
+                // Click kiye gaye service ka naam uthao (e.g., "Aadhar Correction")
+                let serviceName = this.innerText.trim();
+                
+                // Uske box ka heading uthao (e.g., "1. AADHAR CARD")
+                let categoryElement = this.closest('.service-card').querySelector('h3');
+                let categoryName = categoryElement ? categoryElement.innerText.trim() : "Service";
+                
+                // 3 Languages mein message generate karo
+                let textMessage = "Hello R.K. Communication,\n\n" +
+                                  "🇬🇧 English: I need *" + serviceName + "* service from *" + categoryName + "*.\n" +
+                                  "🇮🇳 Hindi: Mujhe *" + categoryName + "* ka *" + serviceName + "* service chahiye.\n" +
+                                  "🇦🇸 Assamese: Mok *" + categoryName + "* or *" + serviceName + "* sewa lage.";
+                
+                // WhatsApp ka link open karo naye tab mein
+                let autoMessage = encodeURIComponent(textMessage);
+                let waLink = "https://wa.me/" + waNumber + "?text=" + autoMessage;
+                window.open(waLink, '_blank');
+            });
+        });
+    </script>
+
+</body>
+</html>
